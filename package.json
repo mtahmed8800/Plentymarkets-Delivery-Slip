@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@plentymarkets/generator-plugin": "^1.0.4"
+  }
+}
