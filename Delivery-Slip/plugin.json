@@ -1,0 +1,43 @@
+{
+    "name": "invincible/delivery-slip-plugin",
+    "version": "1.0.0",
+    "description": "Generating and managing delivery slips for orders",
+    "author": "Mohammad Tanveer Ahmed",
+    "autoload": {
+        "psr-4": {
+            "Invincible\\DeliverySlip\\": "src/"
+        }
+    },
+    "config": {
+        "label_generation_enabled": {
+            "type": "boolean",
+            "label": "Label Generation Enabled",
+            "description": "Enable or disable label generation",
+            "default": false
+        },
+        "debug_url": {
+            "type": "string",
+            "label": "Debug URL",
+            "description": "The URL to use for debugging purposes",
+            "default": "",
+            "options": []
+        }
+    },
+    "dependencies": {
+        "plentymarkets/plugin-name": "^1.0.0"
+    },
+    "minimum-plentymarkets-version": "7.0.0",
+    "namespace": "Invincible\\DeliverySlip",
+    "public": true,
+    "scripts": {
+        "post-install-cmd": [
+            "Invincible\\DeliverySlip\\Plugin::install"
+        ],
+        "post-update-cmd": [
+            "Invincible\\DeliverySlip\\Plugin::update"
+        ],
+        "post-autoload-dump": [
+            "Invincible\\DeliverySlip\\Plugin::autoload"
+        ]
+    }
+}
