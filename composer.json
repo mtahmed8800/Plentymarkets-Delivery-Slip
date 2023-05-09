@@ -1,0 +1,46 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Plugins\\DeliverySlip\\": "src/"
+    }
+  },
+  "require": {
+    "plenty-sdk": "^1.0.0",
+    "php": "^7.4 || ^8.0"
+  },
+  "scripts": {
+    "build": [
+      "rm -rf dist/*",
+      "composer install --no-dev",
+      "zip -r dist/DeliverySlip.zip * -x *.git* -x *.idea* -x *.zip -x composer.* -x dist/*"
+    ]
+  },
+  "extra": {
+    "plenty": {
+      "pluginClasses": {
+        "DeliverySlip": "Plugins\\DeliverySlip\\src\\DeliverySlip"
+      },
+      "routes": [
+        {
+          "method": "GET",
+          "route": "/delivery-slip",
+          "controller": "DeliverySlip::createDeliverySlip"
+        }
+      ],
+      "events": [
+        {
+          "name": "IO.Order.ShippingPackage.Generated",
+          "action": "DeliverySlip::generateDeliverySlip",
+          "priority": 100
+        }
+      ],
+      "pdfGenerators": [
+        {
+          "name": "DeliverySlipGenerator",
+          "type": "order",
+          "class": "Plugins\\DeliverySlip\\src\\PdfGenerator\\DeliverySlipGenerator"
+        }
+      ]
+    }
+  }
+}
