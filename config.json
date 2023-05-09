@@ -1,0 +1,25 @@
+{
+    "name": "Delivery-Slip",
+    "namespace": "Plugins\\DeliverySlip",
+    "type": "backend",
+    "version": "0.0.1",
+    "pluginIcon": "icon_plugin_xs.png",
+    "description": "Create Slips and integrate with a third-party logistics and customs provider",
+    "author": "Mohammad Tanveer Ahmed",
+    "authorIcon": "icon_author_xs.png",
+    "autoload": {
+        "classmap": [
+            "src"
+        ]
+    },
+    "require": {
+        "plentymarkets/plugin-template": "~2.0"
+    },
+    "extra": {
+        "plentymarkets": {
+            "configuratorClass": "Delivery-Slip\\Configurations\\PluginConfigurator"
+        },
+        "plentymarkets-mock-api": "Plugins\\DeliverySlip\\Services\\mockAPI\\MockAPIService"
+    },
+    "serviceProvider": "Plugins\\DeliverySlip\\Providers\\DeliverySlipServiceProvider"
+}

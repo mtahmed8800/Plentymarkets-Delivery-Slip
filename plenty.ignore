@@ -1,0 +1,28 @@
+# PlentyDevTool ignore file
+
+# These rules are applied at the plugin data level (where the plugin.json is located).
+# This file contains some standard entries, which you can customize to your needs.
+# Lines beginning with '#' are ignored.
+# Changes take effect when the app is restarted or the syncPath is changed.
+# If this file is deleted, it is regenerated with the default entries.
+
+# Examples
+# *.*                      matches any file in root directory
+# *.js                     matches any js-file in root directory
+# foo.*                    matches any "foo named" file like foo.txt, foo.js, foo.ts,... in root directory
+# **/*.js                  matches every js-file in any directory
+# /node_modules/*.js       matches any js-files in node_modules directory
+# /node_modules/**/*.js    matches any js-files in node_modules directory and any subdirectory
+# /node_modules/**         matches everything in node_modules directory
+# **/node_modules/**       matches everything in every node_modules directory even if it is a subdirectory
+
+
+# OS specific files
+**/*.DS_Store
+
+# Library directories
+**/vendor/**
+**/node_modules/**
+
+# Other
+**/.git/**

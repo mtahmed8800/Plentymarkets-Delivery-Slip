@@ -1,0 +1,78 @@
+{
+  "name": "DeliverySlip",
+  "version": "1.0.0",
+  "namespace": "DeliverySlip",
+  "type": "backend",
+  "apiVersion": "1.0.0",
+  "autoload": {
+    "psr-4": {
+      "DeliverySlip\\": "src"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+      "php vendor/bin/plentytool generate-plugin-config --plugin-name=DeliverySlip"
+    ]
+  },
+  "require": {
+    "plentymarkets/plugin-api": "^1.0.0",
+    "plentymarkets/plugin-lib": "^2.0.0",
+    "plentymarkets/plugin-config": "^1.0.0"
+  },
+  "config": {
+    "providers": [
+      "DeliverySlip\\Providers\\DeliverySlipServiceProvider"
+    ]
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+      "php vendor/bin/plentytool generate-plugin-config --plugin-name=DeliverySlip"
+    ]
+  },
+  "extra": {
+    "plenty": {
+      "name": "Delivery Slip",
+      "icon": "icon_plugin_xs.png",
+      "description": "Create slips and integrate with a third-party logistics and customs provider.",
+      "authors": [
+        {
+          "name": "Mohammad Tanveer Ahmed",
+          "email": "tmtahmed8800@gmail.com",
+          "homepage": "https://example.com"
+        }
+      ],
+      "serviceProvider": "DeliverySlip\\Providers\\DeliverySlipServiceProvider",
+      "routes": {
+        "backend": [
+          {
+            "route": "DeliverySlip::createDeliverySlip",
+            "method": "GET",
+            "name": "deliverySlip.create",
+            "middlewares": [
+              "oauth"
+            ]
+          }
+        ]
+      },
+      "dependencies": {
+        "plentymarkets/plugin-api": {
+          "api-version": "^1.0.0"
+        },
+        "plentymarkets/plugin-lib": {
+          "api-version": "^2.0.0"
+        },
+        "plentymarkets/plugin-config": {
+          "api-version": "^1.0.0"
+        }
+      },
+      "translations": [
+        {
+          "type": "backend",
+          "path": "lang"
+        }
+      ]
+    }
+  }
+}
