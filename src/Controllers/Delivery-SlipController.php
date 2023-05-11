@@ -73,8 +73,13 @@ class DeliverySlipController extends Controller
             'shippingStatus' => $shippingStatus
         ]);
 
-        // Generate the PDF document from the template content
-        $pdf = $pdfGenerator->generateFromHtml($pdfContent);
+       
+        
+        
+          // Download PDF if "Label generation" is enabled and Generate the PDF document from the template content
+        if ($config['label_generation']) {
+            $pdf = $pdfGenerator->generateFromHtml($pdfContent);
+        }
 
         // Return the PDF document
         return $pdf;
