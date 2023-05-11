@@ -93,5 +93,7 @@ class DeliverySlipController extends Controller
             $pdf->download('order_'.$orderId.'.pdf');
         }
 
-        // Return the PDF document
-        return $
+         // Return the PDF document
+        return $pdf;
+    }
+}
