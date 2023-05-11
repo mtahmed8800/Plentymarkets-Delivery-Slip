@@ -39,8 +39,8 @@
       "authors": [
         {
           "name": "Mohammad Tanveer Ahmed",
-          "email": "tmtahmed8800@gmail.com",
-          "homepage": "https://example.com"
+          "email": "mtahmed8800@gmail.com",
+          "homepage": "https://github.com/mtahmed8800"
         }
       ],
       "serviceProvider": "DeliverySlip\\Providers\\DeliverySlipServiceProvider",
