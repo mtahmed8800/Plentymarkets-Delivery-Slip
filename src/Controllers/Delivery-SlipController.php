@@ -1,6 +1,6 @@
 <?php
 
-namespace Plugins\Plentymarkets-Delivery-Slip\src\Controllers;
+namespace Plugins\DeliverySlip\src\Controllers;
 
 use Plenty\Plugin\Controller;
 use Plenty\Plugin\Http\Request;
