@@ -1,6 +1,6 @@
 <?php
 
-namespace Plugins\DeliverySlip\src\Controllers;
+namespace Plugins\Plentymarkets-Delivery-Slip\src\Controllers;
 
 use Plenty\Plugin\Controller;
 use Plenty\Plugin\Http\Request;
@@ -10,6 +10,7 @@ use Plenty\Modules\Order\Shipping\Information\Models\ShippingInformation;
 use Plenty\Modules\Order\Shipping\Package\Contracts\ShippingPackageRepositoryContract;
 use Plenty\Modules\Order\Shipping\Package\Models\ShippingPackage;
 use Plenty\Plugin\Log\Loggable;
+use Plenty\Plugin\ConfigRepository;
 use Plenty\Plugin\PDFGenerator\PdfGenerator;
 
 class DeliverySlipController extends Controller
@@ -26,12 +27,19 @@ class DeliverySlipController extends Controller
      */
     private $shippingPackageRepository;
 
+    /**
+     * @var ConfigRepository
+     */
+    private $configRepository;
+
     public function __construct(
         ShippingInformationRepositoryContract $shippingInformationRepository,
-        ShippingPackageRepositoryContract $shippingPackageRepository
+        ShippingPackageRepositoryContract $shippingPackageRepository,
+        ConfigRepository $configRepository
     ) {
         $this->shippingInformationRepository = $shippingInformationRepository;
         $this->shippingPackageRepository = $shippingPackageRepository;
+        $this->configRepository = $configRepository;
     }
 
     public function createDeliverySlip(Request $request, Twig $twig, PdfGenerator $pdfGenerator)
@@ -73,15 +81,17 @@ class DeliverySlipController extends Controller
             'shippingStatus' => $shippingStatus
         ]);
 
-       
-        
-        
-          // Download PDF if "Label generation" is enabled and Generate the PDF document from the template content
-        if ($config['label_generation']) {
-            $pdf = $pdfGenerator->generateFromHtml($pdfContent);
+        // Generate the PDF document from the template content
+        $pdf = $pdfGenerator->generateFromHtml($pdfContent, [
+            'format' => 'A4',
+            'orientation' => 'portrait'
+        ]);
+
+        // Download the PDF if "Label generation" is enabled
+        $config = $this->configRepository->get('Plentymarkets-Delivery-Slip.label_generation');
+        if ($config) {
+            $pdf->download('order_'.$orderId.'.pdf');
         }
 
         // Return the PDF document
-        return $pdf;
-    }
-}
+        return $
