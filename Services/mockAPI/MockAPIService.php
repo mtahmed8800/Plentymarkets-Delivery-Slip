@@ -21,6 +21,10 @@ class MockAPIService
         $params = $request->getParams();
         
         // Get the order ID and tracking number from the request parameters.
+        
+        //                'order_id' => 1234,
+        //      'tracking_number' => 'ABC123',
+        
         $orderId = $params['order_id'] ?? '';
         $trackingNumber = $params['tracking_number'] ?? '';
 
