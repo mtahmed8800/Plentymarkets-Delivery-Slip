@@ -21,5 +21,5 @@
         },
         "plentymarkets-mock-api": "Plugins\\DeliverySlip\\Services\\mockAPI\\MockAPIService"
     },
-    "serviceProvider": "Plugins\\DeliverySlip\\Providers\\DeliverySlipServiceProvider"
+    "serviceProvider": "DeliverySlip\\Providers\\DeliverySlipServiceProvider"
 }
