@@ -19,18 +19,18 @@ class MockAPIService
 
         // Retrieve the request parameters.
         $params = $request->getParams();
-
-        // Perform any required processing on the parameters.
-        // ...
+        
+        // Get the order ID and tracking number from the request parameters.
+        $orderId = $params['order_id'] ?? '';
+        $trackingNumber = $params['tracking_number'] ?? '';
 
         // TODO: Implement the actual API call to the shipping provider.
         // For now, return dummy response data.
         return [
             'success' => true,
             'data' => [
-                'order_id' => 1234,
-                'tracking_number' => 'ABC123',
-                'pdf_url' => 'https://example.com/delivery-slip.pdf',
+                'order_id' => $orderId,
+                'tracking_number' => $trackingNumber,
             ],
         ];
     }
