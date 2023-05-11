@@ -1,4 +1,4 @@
-#Delivery Slip Plugin for plentymarkets
+Delivery Slip Plugin for plentymarkets
 The Delivery Slip plugin is designed for plentymarkets, an e-commerce software platform, to generate delivery slips and integrate with a third-party logistics and customs provider. This plugin provides a convenient way to manage delivery slips for orders and streamline the shipping process.
 
 Features
